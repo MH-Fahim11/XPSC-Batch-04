@@ -12,7 +12,7 @@ int main()
         n.insert(0, "0");
     }
     
-    cout<< n;
+    cout<< n<< endl;
 
     return 0;
 }
