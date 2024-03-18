@@ -8,8 +8,12 @@ int main()
     cin>>a>>b;
     
     int maxCoin=max(a,b);
-
-    maxCoin += max(a-1,b);
+    if(a>b){
+        maxCoin += max(a-1,b);
+    }else{
+        maxCoin += max(a,b-1);
+    }
+    
     cout << maxCoin<< endl;
     return 0;
 }

@@ -24,10 +24,10 @@ int main()
 
         int result = -1;
         for (auto it = mp.begin(); it != mp.end();it++) {
-            // if (it->second >= 3) {
+            if (it->second >= 3) {
                 result = it->first;
                 break;
-            // }
+            }
         }
 
 
