@@ -17,12 +17,13 @@ int main()
         cin>>n;
 
         int a[n];
-
+        int b[n];
         for (long long int i = 0; i < n; i++)
         {
             cin>>a[i];
+            b[i]=a[i];
         }
-
+        
         long long int mx= largest(a,n);
 
         int max_index = find(a, a+n, mx)-a;
