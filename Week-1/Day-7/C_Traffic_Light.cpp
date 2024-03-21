@@ -8,6 +8,7 @@ int main()
     cin.tie(NULL);
     int t;
     cin >> t;
+    
     while (t--)
     {
         int n;
@@ -35,7 +36,7 @@ int main()
                     ans = max(ans,diff);
                 }
                 else{
-                    int x =n -(i-1), y = *green_signals_pos.begin();
+                    int x =n -(i+1), y = *green_signals_pos.begin();
                     ans = max(ans,x+y);
                 }
             }

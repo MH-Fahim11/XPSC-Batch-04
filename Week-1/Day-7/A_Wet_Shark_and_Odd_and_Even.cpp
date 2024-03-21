@@ -8,24 +8,30 @@ int main()
     cin.tie(NULL);
     int n;
     cin>>n;
-    long long int sum[n];
+    long long int a[n];
+    long long int sum;
     for (int i = 0; i < n; i++)
     {
         long long int x;
         cin>>x;
-        if(i==0) sum[i] = x;
-        else sum[i] = x+sum[i-1];
+        a[i]=x;
+        if(i==0) sum = x;
+        else sum = x+sum;
         
     }
-
-    for (int i = n-1; i >= 0; i--)
+    sort(a,a+n);
+    for (int i = 0; i < n; i++)
     {
-        if(sum[i]%2==0){
-            cout<< sum[i]<< endl; 
-            return 0;
+        if(sum%2==0){
+           break;
+        }else if(a[i]%2!=0){
+            sum-=a[i];
         }
-       
     }
-    cout<<0<< endl;
+    if(sum>0){
+        cout<<sum<< endl;
+    }else{
+        cout<<0<< endl;
+    }
     return 0;
 }
