@@ -1,59 +1,41 @@
 #include <bits/stdc++.h>
-#define ll long long int
-
 using namespace std;
 
-void solve(vector<ll>& arr, ll X, ll N)
-{
- 
-    vector<vector<ll> > vec(N, vector<ll>(2));
-    for (int i = 0; i < N; i++) {
-        vec[i][0] = arr[i];
-        vec[i][1] = i + 1;
-    }
-
-   
-    sort(vec.begin(), vec.end());
-
- 
-    for (ll ptr1 = 0; ptr1 < N - 2; ptr1++) {
-    
-        ll ptr2 = ptr1 + 1;
-        ll ptr3 = N - 1;
-
-        while (ptr2 < ptr3) {
-            ll currentSum = vec[ptr1][0] + vec[ptr2][0]
-                            + vec[ptr3][0];
-            if (currentSum == X) {
-                cout << vec[ptr1][1] << " " << vec[ptr2][1]
-                     << " " << vec[ptr3][1] << "\n";
-                return;
-            }
-            // Decrease the currentSum by moving ptr3 to
-            // ptr3 - 1
-            else if (currentSum > X) {
-                ptr3--;
-            }
-            // Increase the currentSum by moving ptr2 to
-            // ptr2 + 1
-            else if (currentSum < X) {
-                ptr2++;
-            }
-        }
-    }
-    cout << "IMPOSSIBLE";
-}
-
-int main()
-{
-    ll N, X ;
-    cin>>N>>X;
-    vector<ll> arr;
-    for (int i = 0; i < N; i++)
-    {
-        cin>>arr[i];
-    }
-    
-    solve(arr, X, N);
-    return 0;
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	int n, x;
+	cin >> n >> x;
+	vector<pair<int, int>> arr;
+	for (int i = 1; i <= n; i++) {
+		int a;
+		cin >> a;
+		pair<int, int> p;
+		p.first = a;
+		p.second = i;
+		// first in pair represents value, second represents index
+		arr.push_back(p);
+	}
+	sort(begin(arr), end(arr));
+	for (int i = 0; i < n; i++) {
+		int l, r;
+		l = 0;
+		r = n - 1;
+		while (l != r) {
+			int target;
+			target = x - arr.at(i).first;
+			if (l != i && r != i &&
+			    arr.at(l).first + arr.at(r).first == target) {
+				cout << arr.at(i).second << " " << arr.at(l).second << " "
+				     << arr.at(r).second << endl;
+				return 0;
+			}
+			if (arr.at(l).first + arr.at(r).first < target) {
+				l++;
+			} else {
+				r--;
+			}
+		}
+	}
+	cout << "IMPOSSIBLE" << endl;
 }
